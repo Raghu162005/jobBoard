@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job board</title>
+    <style>
+      :root {
+        --ink: #1f2937;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --blue: #2563eb;
+        --blue-dark: #1d4ed8;
+        --red: #dc2626;
+        --red-dark: #b91c1c;
+      }
+      * { box-sizing: border-box; }
+      body {
+        background: #f4f6fb;
+        color: var(--ink);
+        font-family: system-ui, sans-serif;
+        margin: 0 auto;
+        max-width: 760px;
+        padding: 28px 16px 48px;
+      }
+      h1 { margin: 0 0 20px; }
+      h2 { margin: 36px 0 14px; }
+      input {
+        background: #fff;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-bottom: 18px;
+        outline: none;
+        padding: 12px 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+      }
+      input:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      }
+      ul { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+      .job-card {
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 12px rgba(16, 24, 40, 0.06);
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        padding: 18px 20px;
+        transition: box-shadow 0.2s ease;
+      }
+      .job-card:hover {
+        box-shadow: 0 2px 4px rgba(16, 24, 40, 0.06), 0 8px 20px rgba(16, 24, 40, 0.1);
+      }
+      .job-info { min-width: 0; }
+      .job-info h3 {
+        font-size: 1.05rem;
+        line-height: 1.3;
+        margin: 0 0 4px;
+      }
+      .job-meta {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin: 0;
+      }
+      .job-salary {
+        font-size: 0.92rem;
+        font-weight: 600;
+        margin: 6px 0 0;
+      }
+      button {
+        background: var(--blue);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        flex-shrink: 0;
+        font: inherit;
+        font-weight: 600;
+        padding: 10px 18px;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+      }
+      button:hover {
+        background: var(--blue-dark);
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        transform: translateY(-1px);
+      }
+      button:active { transform: translateY(0); }
+      button:focus-visible {
+        outline: 3px solid #93c5fd;
+        outline-offset: 2px;
+      }
+      button:disabled {
+        background: #93c5fd;
+        box-shadow: none;
+        cursor: default;
+        transform: none;
+      }
+      button.remove { background: var(--red); }
+      button.remove:hover {
+        background: var(--red-dark);
+        box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
+      }
+      .empty {
+        background: transparent;
+        border: 1px dashed #cbd5e1;
+        border-radius: 12px;
+        box-shadow: none;
+        color: var(--muted);
+        padding: 18px 20px;
+        text-align: center;
+      }
+      .sr-only {
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+      @media (max-width: 520px) {
+        .job-card {
+          align-items: stretch;
+          flex-direction: column;
+          gap: 14px;
+          padding: 16px;
+        }
+        .job-card button { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Jobs</h1>
+    <label class="sr-only" for="search">Search jobs by title, company or place</label>
+    <input id="search" type="search" placeholder="Search by title, company or place" />
+    <ul id="jobs"></ul>
+    <h2>Saved jobs</h2>
+    <ul id="saved"></ul>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
